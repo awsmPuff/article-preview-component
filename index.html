@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Article preview component</title>
+
+  <link rel="stylesheet" href="./styles.css">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;700&display=swap" rel="stylesheet">
+
+  <style>
+    .attribution { font-size: 11px; text-align: center; position: absolute; left: 0; right: 0; bottom: 10px;}
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+
+  <main>
+    <div class="pic"></div>
+    <article>
+      <h1>
+        Shift the overall look and feel by adding these wonderful 
+        touches to furniture in your home
+      </h1>
+      <p>
+        Ever been in a room and felt like something was missing? Perhaps 
+        it felt slightly bare and uninviting. I’ve got some simple tips 
+        to help you make any room feel complete.
+      </p>
+      <section class="info">
+        <div class="author">
+          <img src="./images/avatar-michelle.jpg" alt="michelle">
+          <div>
+            <h2>Michelle Appleton</h2>
+            <p>28 Jun 2020</p>
+          </div>
+        </div>
+        <button class="share-btn">
+          <img class="share-icon" src="./images/icon-share.svg" alt="share">
+        </button>
+        <div class="hidden-share">
+          <div class="share-options">
+            <p>share</p>
+            <div class="icons">
+              <img src="./images/icon-facebook.svg" alt="facebook">
+              <img src="./images/icon-twitter.svg" alt="twitter">
+              <img src="./images/icon-pinterest.svg" alt="pinterest">
+            </div>
+          </div>
+          <div class="triangle"></div>
+        </div>  
+      </section>
+    </article>
+  </main>
+  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Laurenxx</a>.
+  </div>
+
+  <script>
+    const sharePart = document.querySelector(".hidden-share");
+    const shareBtn = document.querySelector(".share-btn");
+    const shareIcon = document.querySelector(".share-icon");
+    const mediaQuery = window.matchMedia("(max-width: 480px)");
+
+    shareBtn.addEventListener("click", () => {
+      if(!shareBtn.classList.contains("active")) {
+        if(mediaQuery.matches) {
+          shareBtn.classList.add("active");
+          sharePart.style.display = "block";
+          shareBtn.style.backgroundColor = "hsl(214, 17%, 51%)";
+          shareIcon.style.filter = "brightness(0) invert(1)";
+        } else {
+          shareBtn.classList.add("active");
+          sharePart.style.display = "block";
+          shareBtn.style.backgroundColor = "hsl(217, 19%, 35%)";
+          shareIcon.style.filter = "brightness(0) invert(1)";
+        }
+      } else if(shareBtn.classList.contains("active")) {
+        shareBtn.classList.remove("active");
+        sharePart.style.display = "none";
+        shareBtn.style.backgroundColor = "hsl(210, 46%, 95%)";
+        shareIcon.style.filter = "none";
+      }
+    });
+
+  </script>
+</body>
+</html>
